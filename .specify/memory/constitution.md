@@ -1,55 +1,78 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+Version change: 0.0.0 → 0.1.0
+Modified principles:
+- [PRINCIPLE_1_NAME] → Simplicity Over Complexity
+- [PRINCIPLE_2_NAME] → Content Accuracy & Minimalism
+- [PRINCIPLE_3_NAME] → Free-Tier-Friendly Architecture
+- [PRINCIPLE_4_NAME] → RAG-Ready Textbook
+- [PRINCIPLE_5_NAME] → Consistent Style & Formatting
+- [PRINCIPLE_6_NAME] → Fast Build & Clean Structure
+- [PRINCIPLE__DESCRIPTION] → Production-Safe Code & Documentation
+Added sections:
+- Key Features
+- Constraints
+- Success Criteria
+Removed sections: None
+Templates requiring updates:
+- .specify/templates/plan-template.md: ⚠ pending
+- .specify/templates/spec-template.md: ⚠ pending
+- .specify/templates/tasks-template.md: ⚠ pending
+- .specify/templates/commands/*.md: ⚠ pending
+Follow-up TODOs: None
+-->
+# Humanoid Robotic Textbook — AI-Native Edition Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Simplicity Over Complexity
+Use simple language, minimal dependencies, clean structure, and short chapters.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Content Accuracy & Minimalism (NON-NEGOTIABLE)
+Technical correctness must be verified; avoid over-complication, long equations, or unnecessary theory.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Free-Tier-Friendly Architecture
+Book design must remain lightweight and optimized for GitHub Pages deployment and low-compute AI usage.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. RAG-Ready Textbook
+All content must be written such that a future RAG chatbot can answer ONLY from this textbook without hallucination.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Consistent Style & Formatting
+Use Docusaurus Markdown, consistent heading structure, bullet lists, tables, diagrams, and glossary terms.
 
-### [PRINCIPLE_6_NAME]
+### VI. Fast Build & Clean Structure
+Build must complete under 30 seconds; static assets must be minimal; avoid heavy images.
 
+### VII. Production-Safe Code & Documentation
+Use validated examples, no hardcoded secrets, safe robotics instructions, and correct code snippets.
 
-[PRINCIPLE__DESCRIPTION]
+## Key Features
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+- Docusaurus-based humanoid robotics textbook with clean, minimal UI.
+- Support for:
+  - “Select text → Ask AI” interaction (future enhancement)
+  - Translation-ready chapters (e.g., Urdu)
+  - Personalized content adaptation (optional)
+- Gemini-assisted diagrams and explanations.
+- Claude Code + Spec-Kit Plus for spec-first chapter development.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+## Constraints
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+- Minimal compute usage.
+- Lightweight images/diagrams; avoid large assets.
+- Small, clean chapters (beginner-friendly).
+- Avoid deep mathematics or unsafe robotics instructions.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Success Criteria
+
+- Textbook builds successfully with no errors.
+- All chapters align with course outcomes and humanoid robotics fundamentals.
+- Writing style is consistent across all chapters.
+- Claude Code can reliably generate and extend chapters from the specification.
+- Deployment to GitHub Pages works smoothly.
+- Content is RAG-friendly, clean, and technically correct.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+Constitution supersedes all other practices; Amendments require documentation, approval, migration plan. All PRs/reviews must verify compliance; Complexity must be justified.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 0.1.0 | **Ratified**: 2025-12-05 | **Last Amended**: 2025-12-05

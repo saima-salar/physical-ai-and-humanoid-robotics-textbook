@@ -1,0 +1,33 @@
+# Dockerignore
+
+# Git
+.git
+.gitignore
+
+# Node.js
+node_modules/
+dist/
+build/
+*.log
+.env*
+.docusaurus/
+.cache/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# Universal
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.vscode/
+.idea/
+coverage/
+Dockerfile*
+.dockerignore

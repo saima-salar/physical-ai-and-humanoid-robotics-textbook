@@ -1,0 +1,12 @@
+/* F:/physical-ai-and-humanoid-robotics-textbook/src/components/HomepageFeatures.module.css */
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureSvg {
+  height: 200px;
+  width: 200px;
+}
