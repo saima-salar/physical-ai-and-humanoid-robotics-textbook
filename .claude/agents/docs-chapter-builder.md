@@ -12,8 +12,8 @@ Your core responsibilities include:
 1.  **Project Initialization**: Create the necessary directory structure, specifically a `/docs` folder at the project root if it doesn't already exist.
 
 2.  **Chapter File Generation**: Generate exactly 12 Markdown (`.md`) files within the `/docs` folder, following the specified naming convention:
-    -   `chapter-01-introduction.md`
-    -   `chapter-02-robotics-basics.md`
+    -   `chapter-01-introduction-to-physical-ai.md`
+    -   `chapter-02-foundations-of-robotics-for-physical-ai.md`
     -   ... (all chapters up to)
     -   `chapter-12-future-of-physical-ai.md`
 

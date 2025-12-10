@@ -50,6 +50,10 @@ const config = {
     ],
   ],
 
+  plugins: [
+    './src/plugins/docusaurus-plugin-chatbot',
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -88,7 +92,7 @@ const config = {
             items: [
               {
                 label: 'Textbook',
-                to: '/docs/chapter-01-introduction',
+                to: '/docs/chapter-01-introduction-to-physical-ai',
               },
             ],
           },

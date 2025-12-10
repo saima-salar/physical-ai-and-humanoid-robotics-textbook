@@ -8,8 +8,8 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   tutorialSidebar: [
-    'chapter-01-introduction',
-    'chapter-02-robotics-basics',
+    'chapter-01-introduction-to-physical-ai',
+    'chapter-02-foundations-of-robotics-for-physical-ai',
     'chapter-03-human-robot-interaction',
     'chapter-04-robot-locomotion',
     'chapter-05-manipulation-and-grasping',
