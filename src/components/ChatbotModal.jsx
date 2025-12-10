@@ -21,21 +21,31 @@ const ChatbotModal = () => {
         aria-label="Open chatbot"
         style={{
           position: 'fixed',
-          bottom: '20px',
-          right: '20px',
-          width: '60px',
-          height: '60px',
+          bottom: '24px',
+          right: '24px',
+          width: '68px',
+          height: '68px',
           borderRadius: '50%',
-          backgroundColor: '#25c2a0',
+          background: 'linear-gradient(135deg, #3f51b5 0%, #5c6bc0 100%)',
           color: 'white',
           border: 'none',
-          fontSize: '24px',
+          fontSize: '26px',
           cursor: 'pointer',
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+          boxShadow: '0 8px 24px rgba(63, 81, 181, 0.4)',
           zIndex: 1000,
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          transition: 'all 0.3s ease',
+          transform: 'scale(1)'
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.transform = 'scale(1.1)';
+          e.target.style.boxShadow = '0 12px 30px rgba(63, 81, 181, 0.5)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.transform = 'scale(1)';
+          e.target.style.boxShadow = '0 8px 24px rgba(63, 81, 181, 0.4)';
         }}
       >
         💬
@@ -46,38 +56,55 @@ const ChatbotModal = () => {
         <div
           style={{
             position: 'fixed',
-            bottom: '90px',
-            right: '20px',
+            bottom: '94px',
+            right: '24px',
             width: '400px',
             height: '500px',
-            backgroundColor: 'white',
-            borderRadius: '8px',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
+            background: 'linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%)',
+            borderRadius: '20px',
+            boxShadow: '0 20px 60px rgba(63, 81, 181, 0.25)',
             zIndex: 1000,
             display: 'flex',
             flexDirection: 'column',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            border: '1px solid rgba(63, 81, 181, 0.15)'
           }}
         >
           <div
             style={{
-              padding: '12px',
-              backgroundColor: '#f8f9fa',
-              borderBottom: '1px solid #e9ecef',
+              padding: '16px 20px',
+              background: 'linear-gradient(135deg, #3f51b5 0%, #5c6bc0 100%)',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center'
             }}
           >
-            <h3 style={{ margin: 0, fontSize: '1em' }}>Textbook Assistant</h3>
+            <h3 style={{ margin: 0, fontSize: '1.1em', fontWeight: '600', color: 'white', letterSpacing: '0.5px' }}>Physical AI & Robotics</h3>
             <button
               onClick={() => setIsOpen(false)}
               style={{
-                background: 'none',
+                background: 'rgba(255, 255, 255, 0.25)',
                 border: 'none',
                 fontSize: '1.2em',
                 cursor: 'pointer',
-                color: '#666'
+                color: 'white',
+                width: '32px',
+                height: '32px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 0.3s ease',
+                backdropFilter: 'blur(10px)'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.35)';
+                e.target.style.transform = 'scale(1.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.25)';
+                e.target.style.transform = 'scale(1)';
               }}
             >
               ×

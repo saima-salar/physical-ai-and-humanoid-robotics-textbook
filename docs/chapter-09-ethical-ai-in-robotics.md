@@ -5,6 +5,11 @@ id: chapter-09-ethical-ai-in-robotics
 sidebar_position: 9
 ---
 
+import PersonalizationButton from '@site/src/components/PersonalizationButton';
+import ContentFilter from '@site/src/components/ContentFilter';
+
+<PersonalizationButton chapterId="chapter-09-ethical-ai-in-robotics" chapterTitle="Chapter 9 — Ethical AI in Robotics" />
+
 # Chapter 09: Ethical AI in Robotics
 
 ## Introduction

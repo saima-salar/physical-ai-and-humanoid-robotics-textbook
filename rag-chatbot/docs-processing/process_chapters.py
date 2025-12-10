@@ -8,6 +8,10 @@ import logging
 from qdrant_client import QdrantClient
 from qdrant_client.http import models
 
+import sys
+import os
+# Add backend directory to path to import config
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'backend'))
 from config import *
 from embedding_utils import create_chunks, get_embeddings
 

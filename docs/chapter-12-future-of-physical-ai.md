@@ -5,6 +5,11 @@ id: chapter-12-future-of-physical-ai
 sidebar_position: 12
 ---
 
+import PersonalizationButton from '@site/src/components/PersonalizationButton';
+import ContentFilter from '@site/src/components/ContentFilter';
+
+<PersonalizationButton chapterId="chapter-12-future-of-physical-ai" chapterTitle="Chapter 12 — Future of Physical AI" />
+
 # Chapter 12: Future of Physical AI
 
 ## Introduction

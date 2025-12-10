@@ -5,6 +5,11 @@ id: chapter-10-advanced-humanoid-design
 sidebar_position: 10
 ---
 
+import PersonalizationButton from '@site/src/components/PersonalizationButton';
+import ContentFilter from '@site/src/components/ContentFilter';
+
+<PersonalizationButton chapterId="chapter-10-advanced-humanoid-design" chapterTitle="Chapter 10 — Advanced Humanoid Design" />
+
 # Chapter 10: Advanced Humanoid Design
 
 ## Introduction

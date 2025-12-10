@@ -5,6 +5,11 @@ id: chapter-07-robot-learning
 sidebar_position: 7
 ---
 
+import PersonalizationButton from '@site/src/components/PersonalizationButton';
+import ContentFilter from '@site/src/components/ContentFilter';
+
+<PersonalizationButton chapterId="chapter-07-robot-learning" chapterTitle="Chapter 7 — Robot Learning" />
+
 # Chapter 07: Robot Learning
 
 ## Introduction

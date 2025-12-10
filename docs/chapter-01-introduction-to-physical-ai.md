@@ -5,6 +5,11 @@ id: chapter-01-introduction-to-physical-ai
 sidebar_position: 1
 ---
 
+import PersonalizationButton from '@site/src/components/PersonalizationButton';
+import ContentFilter from '@site/src/components/ContentFilter';
+
+<PersonalizationButton chapterId="chapter-01-introduction-to-physical-ai" chapterTitle="Introduction to Physical AI" />
+
 # Chapter 1 — Introduction to Physical AI
 
 ## Introduction
@@ -69,6 +74,64 @@ The first step in any physical AI system is to gather information about its surr
     *   **Tactile and Force Sensors:** Provide information about physical contact, pressure, and forces exerted. These are typically embedded in grippers, fingertips, or robot joints, allowing for delicate manipulation or detection of obstacles.
     *   **Inertial Measurement Units (IMUs):** Comprising accelerometers and gyroscopes, IMUs provide data on the robot's orientation, angular velocity, and linear acceleration. Essential for balancing, maintaining posture, and understanding self-motion.
     *   **Proprioceptive Sensors:** These sensors monitor the robot's internal state, such as joint angles, motor speeds, and power consumption. This self-awareness is vital for precise control and anomaly detection.
+
+<ContentFilter chapterId="chapter-01-introduction-to-physical-ai" preferenceKey="math" defaultShow={false}>
+*   **Mathematical Representation:** The sensory data is often represented mathematically. For example, camera images can be represented as matrices of pixel values, while LiDAR data might be represented as point clouds in 3D space. The transformation of raw sensor readings into meaningful representations often involves mathematical operations such as convolutions, transformations, and statistical analysis.
+</ContentFilter>
+
+<ContentFilter chapterId="chapter-01-introduction-to-physical-ai" preferenceKey="code" defaultShow={false}>
+*   **Code Example:** Here's a simple example of processing camera data in Python:
+    ```python
+    import cv2
+    import numpy as np
+
+    # Load an image from camera
+    image = cv2.imread('camera_feed.jpg')
+
+    # Convert to grayscale for simpler processing
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    # Apply edge detection
+    edges = cv2.Canny(gray, 50, 150)
+
+    # Find contours of objects
+    contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    ```
+</ContentFilter>
+
+<ContentFilter chapterId="chapter-01-introduction-to-physical-ai" preferenceKey="practical" defaultShow={true}>
+*   **Real-World Application:** In a warehouse setting, a robot might use multiple sensors to navigate aisles and locate packages. Its cameras identify barcodes and QR codes, while LiDAR sensors help it avoid obstacles and maintain safe distances from humans. Tactile sensors in its gripper ensure it applies the right amount of force when picking up fragile items.
+</ContentFilter>
+
+<ContentFilter chapterId="chapter-01-introduction-to-physical-ai" preferenceKey="visual" defaultShow={true}>
+*   **Visual Diagram:** Below is a simplified representation of how sensor data flows through a robot's perception system:
+
+```
+       +-----------------+
+       |   Environment   |
+       +-------^---------+
+               |
+     (Physical Interaction)
+               |
+     +---------v---------+
+     |      Sensors      |
+     |   (Perception)    |
+     +---------v---------+
+               |
+   (Raw Data / Features)
+               |
+     +---------v---------+
+     |  Processing Unit  |
+     | (Data Analysis)   |
+     +---------v---------+
+               |
+      (Interpreted Data)
+               |
+     +---------v---------+
+     |   Action System   |
+     +-------------------+
+```
+</ContentFilter>
 
 *   **Data Pre-processing and Feature Extraction:** Raw sensor data is often noisy, high-dimensional, and not directly usable. Pre-processing involves filtering, normalization, and calibration. Feature extraction then identifies salient information from the raw data. For instance, a computer vision pipeline might extract edges, corners, or specific object shapes from a camera image.
 

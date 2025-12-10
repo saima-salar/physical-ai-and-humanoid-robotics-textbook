@@ -6,7 +6,10 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv('rag-chatbot/.env')
 
-from docs-processing.process_chapters import ChapterProcessor
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), 'docs-processing'))
+from process_chapters import ChapterProcessor
 
 async def setup_rag_system():
     """Setup the RAG system by processing all textbook chapters"""

@@ -5,6 +5,11 @@ id: chapter-04-robot-locomotion
 sidebar_position: 4
 ---
 
+import PersonalizationButton from '@site/src/components/PersonalizationButton';
+import ContentFilter from '@site/src/components/ContentFilter';
+
+<PersonalizationButton chapterId="chapter-04-robot-locomotion" chapterTitle="Chapter 4 — Robot Locomotion" />
+
 # Chapter 04: Robot Locomotion
 
 ## Introduction

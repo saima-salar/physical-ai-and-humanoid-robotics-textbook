@@ -5,6 +5,11 @@ id: chapter-11-applications-of-physical-ai
 sidebar_position: 11
 ---
 
+import PersonalizationButton from '@site/src/components/PersonalizationButton';
+import ContentFilter from '@site/src/components/ContentFilter';
+
+<PersonalizationButton chapterId="chapter-11-applications-of-physical-ai" chapterTitle="Chapter 11 — Applications of Physical AI" />
+
 # Chapter 11: Applications of Physical AI
 
 ## Introduction

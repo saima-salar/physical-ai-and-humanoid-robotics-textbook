@@ -5,6 +5,11 @@ id: chapter-08-navigation-and-mapping
 sidebar_position: 8
 ---
 
+import PersonalizationButton from '@site/src/components/PersonalizationButton';
+import ContentFilter from '@site/src/components/ContentFilter';
+
+<PersonalizationButton chapterId="chapter-08-navigation-and-mapping" chapterTitle="Chapter 8 — Navigation and Mapping" />
+
 # Chapter 08: Navigation and Mapping
 
 ## Introduction

@@ -1,10 +1,8 @@
 
----
-title: Chapter 6 — Sensing and Perception
-description: Exploring the technologies and algorithms that enable robots to perceive and understand their environment
-id: chapter-06-sensing-and-perception
-sidebar_position: 6
----
+import PersonalizationButton from '@site/src/components/PersonalizationButton';
+import ContentFilter from '@site/src/components/ContentFilter';
+
+<PersonalizationButton chapterId="chapter-06-sensing-and-perception" chapterTitle="Sensing and Perception" />
 
 # Chapter 06: Sensing and Perception
 

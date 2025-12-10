@@ -109,11 +109,6 @@ const Chatbot = () => {
 
   return (
     <div className="chatbot-container">
-      <div className="chatbot-header">
-        <h3>Physical AI & Robotics Assistant</h3>
-        <button onClick={clearChat} className="clear-chat-btn">Clear Chat</button>
-      </div>
-
       <div className="chatbot-messages">
         {messages.length === 0 ? (
           <div className="welcome-message">
@@ -166,6 +161,9 @@ const Chatbot = () => {
       )}
 
       <div className="chatbot-input-area">
+        <div className="chatbot-input-controls">
+          <button onClick={clearChat} className="clear-chat-btn">Clear Chat</button>
+        </div>
         <textarea
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}

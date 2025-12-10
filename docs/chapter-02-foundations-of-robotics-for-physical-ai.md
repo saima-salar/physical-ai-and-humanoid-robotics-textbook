@@ -5,6 +5,11 @@ id: chapter-02-foundations-of-robotics-for-physical-ai
 sidebar_position: 2
 ---
 
+import PersonalizationButton from '@site/src/components/PersonalizationButton';
+import ContentFilter from '@site/src/components/ContentFilter';
+
+<PersonalizationButton chapterId="chapter-02-foundations-of-robotics-for-physical-ai" chapterTitle="Chapter 2 — Foundations of Robotics for Physical AI" />
+
 # Chapter 2 — Foundations of Robotics for Physical AI
 
 ## Introduction

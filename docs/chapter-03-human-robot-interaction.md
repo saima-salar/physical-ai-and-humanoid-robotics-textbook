@@ -5,6 +5,11 @@ id: chapter-03-human-robot-interaction
 sidebar_position: 3
 ---
 
+import PersonalizationButton from '@site/src/components/PersonalizationButton';
+import ContentFilter from '@site/src/components/ContentFilter';
+
+<PersonalizationButton chapterId="chapter-03-human-robot-interaction" chapterTitle="Chapter 3 — Human-Robot Interaction" />
+
 # Chapter 03: Human-Robot Interaction
 
 ## Introduction

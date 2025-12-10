@@ -1,0 +1,222 @@
+.personalization-container {
+  position: relative;
+  margin: 20px 0;
+  padding: 16px;
+  background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+  border: 1px solid rgba(63, 81, 181, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(63, 81, 181, 0.05);
+}
+
+.personalize-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #3f51b5 0%, #5c6bc0 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(63, 81, 181, 0.2);
+}
+
+.personalize-btn:hover {
+  background: linear-gradient(135deg, #324091 0%, #4d5cb8 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(63, 81, 181, 0.3);
+}
+
+.personalize-btn.active {
+  background: linear-gradient(135deg, #324091 0%, #4d5cb8 100%);
+  box-shadow: 0 4px 12px rgba(63, 81, 181, 0.3);
+}
+
+.customize-icon {
+  font-size: 1.2em;
+}
+
+.personalization-panel {
+  margin-top: 16px;
+  padding: 20px;
+  background: white;
+  border: 1px solid rgba(63, 81, 181, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(63, 81, 181, 0.1);
+}
+
+.personalization-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(63, 81, 181, 0.1);
+}
+
+.personalization-header h3 {
+  margin: 0;
+  color: #3f51b5;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #666;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.personalization-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.option-label:hover {
+  background-color: #f8f9ff;
+}
+
+.option-label input[type="checkbox"] {
+  margin: 0;
+  width: 18px;
+  height: 18px;
+  accent-color: #3f51b5;
+}
+
+.option-text {
+  font-weight: 500;
+  color: #333;
+}
+
+.preference-summary {
+  padding: 16px;
+  background: #f8f9ff;
+  border-radius: 8px;
+  border: 1px solid rgba(63, 81, 181, 0.1);
+}
+
+.preference-summary h4 {
+  margin: 0 0 8px 0;
+  color: #3f51b5;
+  font-size: 0.9em;
+}
+
+.preference-summary ul {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.preference-summary li {
+  margin: 4px 0;
+}
+
+.reset-section {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reset-btn {
+  padding: 8px 16px;
+  background: #f5f5f5;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.personalization-locked {
+  margin: 20px 0;
+  padding: 16px;
+  background: linear-gradient(135deg, #fff8f0 0%, #ffffff 100%);
+  border: 1px solid rgba(255, 165, 0, 0.2);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.personalization-locked-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #d35400;
+}
+
+.lock-icon {
+  font-size: 1.5em;
+}
+
+.personalization-locked p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.95em;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .personalization-container {
+    margin: 16px 0;
+    padding: 12px;
+  }
+
+  .personalize-btn {
+    padding: 10px 16px;
+    font-size: 0.9em;
+  }
+
+  .personalization-panel {
+    padding: 16px;
+  }
+
+  .personalization-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .close-btn {
+    align-self: flex-end;
+  }
+
+  .option-label {
+    flex-direction: row;
+  }
+}

@@ -5,6 +5,11 @@ id: chapter-05-manipulation-and-grasping
 sidebar_position: 5
 ---
 
+import PersonalizationButton from '@site/src/components/PersonalizationButton';
+import ContentFilter from '@site/src/components/ContentFilter';
+
+<PersonalizationButton chapterId="chapter-05-manipulation-and-grasping" chapterTitle="Chapter 5 — Manipulation and Grasping" />
+
 # Chapter 05: Manipulation and Grasping
 
 ## Introduction
