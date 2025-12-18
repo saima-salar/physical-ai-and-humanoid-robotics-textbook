@@ -1,0 +1,260 @@
+/**
+ * Any CSS you add here will be applied to all pages of your Docusaurus site.
+ * This file now integrates with our design system for consistent styling.
+ */
+
+/* Map our design system colors to Infima variables */
+:root {
+  --ifm-color-primary: var(--color-primary-500); /* #3F51B5 - Main bluish purple */
+  --ifm-color-primary-dark: var(--color-primary-600); /* #3949AB - Darker bluish purple */
+  --ifm-color-primary-darker: var(--color-primary-700); /* #303F9F - Even darker bluish purple */
+  --ifm-color-primary-darkest: var(--color-primary-800); /* #283593 - Darkest bluish purple */
+  --ifm-color-primary-light: var(--color-primary-400); /* #5C6BC0 - Lighter bluish purple */
+  --ifm-color-primary-lighter: var(--color-primary-300); /* #7986CB - Even lighter bluish purple */
+  --ifm-color-primary-lightest: var(--color-primary-200); /* #9FA8DA - Lightest bluish purple */
+  --ifm-color-secondary: var(--color-secondary-500); /* #3F51B5 - Secondary bluish purple */
+  --ifm-color-secondary-dark: var(--color-secondary-600); /* #3949AB */
+  --ifm-color-secondary-darker: var(--color-secondary-700); /* #303F9F */
+  --ifm-color-secondary-darkest: var(--color-secondary-800); /* #283593 */
+  --ifm-color-secondary-light: var(--color-secondary-400); /* #5C6BC0 */
+  --ifm-color-secondary-lighter: var(--color-secondary-300); /* #7986CB */
+  --ifm-color-secondary-lightest: var(--color-secondary-200); /* #9FA8DA */
+  --ifm-color-success: var(--color-success); /* #10B981 */
+  --ifm-color-info: var(--color-info); /* #0EA5E9 */
+  --ifm-color-warning: var(--color-warning); /* #F59E0B */
+  --ifm-color-danger: var(--color-error); /* #EF4444 */
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: color-mix(in srgb, var(--color-gray-500) 10%, transparent);
+  --ifm-font-family-base: var(--font-primary);
+  --ifm-font-family-monospace: var(--font-mono);
+}
+
+/* Dark mode color mapping */
+[data-theme='dark'] {
+  --ifm-color-primary: var(--color-primary-400); /* #5C6BC0 - Adjusted bluish purple for dark mode */
+  --ifm-color-primary-dark: var(--color-primary-300); /* #7986CB - Darker bluish purple for dark mode */
+  --ifm-color-primary-darker: var(--color-primary-200); /* #9FA8DA - Even darker bluish purple for dark mode */
+  --ifm-color-primary-darkest: var(--color-primary-100); /* #C5CAE9 - Darkest bluish purple for dark mode */
+  --ifm-color-primary-light: var(--color-primary-500); /* #3F51B5 - Lighter bluish purple for dark mode */
+  --ifm-color-primary-lighter: var(--color-primary-600); /* #3949AB - Even lighter bluish purple for dark mode */
+  --ifm-color-primary-lightest: var(--color-primary-700); /* #303F9F - Lightest bluish purple for dark mode */
+  --docusaurus-highlighted-code-line-bg: color-mix(in srgb, var(--color-gray-400) 20%, transparent);
+}
+
+/* Dark mode navbar and footer adjustments */
+[data-theme='dark'] .navbar {
+  background-color: #3F6B99 !important; /* Darker version of #5390D9 for dark mode */
+}
+
+[data-theme='dark'] .footer {
+  background-color: #3F6B99 !important; /* Same darker version for dark mode */
+}
+
+/* More specific selectors for dark mode */
+[data-theme='dark'] .navbar[class*="navbar"] {
+  background-color: #3F6B99 !important;
+}
+
+[data-theme='dark'] footer[class*="footer"] {
+  background-color: #3F6B99 !important;
+}
+
+/* Docusaurus specific selectors for dark mode */
+[data-theme='dark'] .navbar--primary {
+  background-color: #3F6B99 !important;
+}
+
+[data-theme='dark'] .footer--primary {
+  background-color: #3F6B99 !important;
+}
+
+/* Dark mode hero section adjustment */
+[data-theme='dark'] .hero--primary {
+  background: #3a8bc4; /* Darker version of #4ea8de for dark mode */
+}
+
+/* Typography overrides to use our design system */
+:root {
+  --ifm-h1-font-size: var(--text-4xl);
+  --ifm-h2-font-size: var(--text-3xl);
+  --ifm-h3-font-size: var(--text-2xl);
+  --ifm-h4-font-size: var(--text-xl);
+  --ifm-font-size-base: var(--text-base);
+  --ifm-line-height-base: var(--leading-normal);
+}
+
+/* Additional theme adjustments */
+.navbar {
+  background-color: #5390D9 !important; /* Specified color for navbar */
+  border-bottom: 1px solid var(--border-primary);
+  box-shadow: var(--shadow);
+}
+
+.footer {
+  background-color: #5390D9 !important; /* Same specified color for footer */
+  border-top: 1px solid var(--border-primary);
+  color: var(--text-primary);
+}
+
+/* More specific selectors to ensure color override */
+.navbar[class*="navbar"] {
+  background-color: #5390D9 !important;
+}
+
+footer[class*="footer"] {
+  background-color: #5390D9 !important;
+}
+
+/* Docusaurus specific navbar and footer selectors */
+.navbar--primary {
+  background-color: #5390D9 !important;
+}
+
+.footer--primary {
+  background-color: #5390D9 !important;
+}
+
+.hero--primary {
+  background: #4ea8de; /* Specified color for hero section */
+}
+
+/* Enhanced card styling */
+.card {
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-primary);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Enhanced button styling */
+.button--primary {
+  background: #56cfe1 !important; /* Specified color */
+  box-shadow: none !important;
+  border-radius: 50px !important; /* Round shape */
+  padding: var(--spacing-2) var(--spacing-4) !important; /* Minimal size */
+  font-size: var(--text-sm) !important; /* Minimal size */
+}
+
+.button--primary:hover {
+  background: #3ab4c9 !important; /* Slightly darker on hover */
+}
+
+.button--secondary {
+  background: #56cfe1 !important; /* Specified color */
+  box-shadow: none !important;
+  color: var(--text-primary) !important;
+  border-radius: 50px !important; /* Round shape */
+  padding: var(--spacing-2) var(--spacing-4) !important; /* Minimal size */
+  font-size: var(--text-sm) !important; /* Minimal size */
+}
+
+.button--secondary:hover {
+  background: #3ab4c9 !important; /* Slightly darker on hover */
+}
+
+/* Enhanced alert styling */
+.alert {
+  border-left-width: 4px;
+  border-radius: 0 8px 8px 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.alert--success {
+  border-left-color: var(--color-success);
+  background-color: color-mix(in srgb, var(--color-success) 5%, transparent);
+}
+
+.alert--warning {
+  border-left-color: var(--color-warning);
+  background-color: color-mix(in srgb, var(--color-warning) 5%, transparent);
+}
+
+.alert--error {
+  border-left-color: var(--color-error);
+  background-color: color-mix(in srgb, var(--color-error) 5%, transparent);
+}
+
+/* Enhanced table styling */
+table {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+th {
+  background: color-mix(in srgb, var(--color-primary-600) 10%, transparent);
+}
+
+/* Enhanced blockquote styling */
+blockquote {
+  border-left: 4px solid;
+  border-image: var(--gradient-primary) 1;
+  padding-left: var(--spacing-6);
+  margin: var(--spacing-6) 0;
+  font-style: italic;
+  background: color-mix(in srgb, var(--color-primary-50) 50%, transparent);
+  border-radius: 0 8px 8px 0;
+}
+
+/* Code block styling to match our design system */
+.prism-code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+  border-radius: 8px;
+  padding: var(--spacing-4) !important;
+}
+
+/* Markdown content styling */
+.markdown {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+/* Button styling */
+.button {
+  font-family: var(--font-primary);
+  font-weight: var(--font-semibold);
+}
+
+/* Chatbot widget styling - now handled in JSX inline styles */
+
+/* Enhanced chatbot container styling */
+.chatbot-container {
+  box-shadow: var(--shadow-lg);
+  border-radius: 12px;
+  border: 1px solid var(--border-primary);
+}
+
+/* Urdu Translation Button styling */
+.urdu-translation-button {
+  background: #56cfe1 !important; /* Specified color */
+  box-shadow: none !important;
+  transition: all 0.2s ease !important;
+  border-radius: 50% !important; /* Perfect circle */
+  width: 30px !important;  /* Fixed width to match other buttons */
+  height: 30px !important; /* Fixed height to match other buttons */
+  padding: 0 !important;   /* Remove padding to maintain circle */
+  font-size: 1em !important; /* Consistent icon size */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.urdu-translation-button.navbar-btn {
+  width: 28px !important;
+  height: 28px !important;
+  font-size: 0.9em !important;
+}
+
+.urdu-translation-button:hover {
+  background: #3ab4c9 !important; /* Slightly darker on hover */
+  transform: translateY(-1px) !important;
+}
