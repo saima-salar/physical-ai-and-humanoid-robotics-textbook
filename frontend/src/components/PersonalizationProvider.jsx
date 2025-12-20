@@ -30,13 +30,62 @@ export const PersonalizationProvider = ({ children }) => {
   });
 
   const [currentPreferences, setCurrentPreferences] = useState({});
-  const [isPersonalizationEnabled, setIsPersonalizationEnabled] = useState(false);
+  const [isPersonalizationEnabled, setIsPersonalizationEnabled] = useState(() => {
+    // Load personalization state from localStorage on initial render
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('isPersonalizationEnabled');
+      return saved ? JSON.parse(saved) : false;
+    }
+    return false;
+  });
 
   // Load user profile and preferences on component mount and when session changes
   useEffect(() => {
     loadUserProfile();
     loadChapterPreferences();
   }, [session]);
+
+  // Effect to sync personalization state with localStorage on component mount and when localStorage changes
+  useEffect(() => {
+    // Function to update state from localStorage
+    const updateStateFromStorage = () => {
+      const saved = localStorage.getItem('isPersonalizationEnabled');
+      if (saved !== null) {
+        try {
+          const savedState = JSON.parse(saved);
+          // Only update if the current state differs from localStorage
+          if (isPersonalizationEnabled !== savedState) {
+            setIsPersonalizationEnabled(savedState);
+          }
+        } catch (error) {
+          console.warn('Error parsing personalization state from localStorage:', error);
+        }
+      }
+    };
+
+    // Update state immediately when component mounts/re-renders
+    updateStateFromStorage();
+
+    // Set up a listener for localStorage changes from other tabs/components
+    const handleStorageChange = (e) => {
+      if (e.key === 'isPersonalizationEnabled') {
+        updateStateFromStorage();
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, [isPersonalizationEnabled]); // Include isPersonalizationEnabled in the dependency array to ensure proper cleanup
+
+  // Save personalization state to localStorage whenever it changes
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('isPersonalizationEnabled', JSON.stringify(isPersonalizationEnabled));
+    }
+  }, [isPersonalizationEnabled]);
 
   const loadUserProfile = () => {
     if (session && session.user) {
@@ -126,13 +175,18 @@ export const PersonalizationProvider = ({ children }) => {
     localStorage.setItem(`chapterPrefs_${chapterId}`, JSON.stringify(preferences));
   };
 
+  const togglePersonalization = () => {
+    setIsPersonalizationEnabled(prev => !prev);
+  };
+
   const value = {
     userProfile,
     currentPreferences,
     isPersonalizationEnabled,
     setIsPersonalizationEnabled,
     updateUserProfile,
-    updateChapterPreferences
+    updateChapterPreferences,
+    togglePersonalization
   };
 
   return (

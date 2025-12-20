@@ -6,8 +6,8 @@ if (typeof window !== 'undefined') {
   // In the browser context
   window.BACKEND_API_URL = window.location.origin.replace(/:\d+$/, ':8003');
 
-  // For auth service, use a similar pattern
-  window.AUTH_API_URL = window.location.origin.replace(/:\d+$/, ':9001');
+  // For auth service, use the same port as backend API
+  window.AUTH_API_URL = window.location.origin.replace(/:\d+$/, ':8003');
 
   // Define the chatbot modal function directly
   window.openChatbotModal = function() {

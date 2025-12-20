@@ -24,6 +24,8 @@
   font-weight: 500;
   transition: all 0.3s ease;
   box-shadow: none; /* Remove box shadow */
+  position: relative;
+  overflow: visible; /* Allow indicator dot to show */
 }
 
 .personalize-btn .customize-icon {
@@ -36,13 +38,65 @@
   font-weight: bold; /* Bold for better visibility */
 }
 
+.personalize-btn.enabled {
+  background: #3f51b5; /* Blue when enabled */
+  color: white;
+}
+
+.personalize-btn.enabled .customize-icon {
+  color: white;
+}
+
 .personalize-btn:hover {
   background: #C8AFA2; /* Slightly darker on hover */
   transform: translateY(-1px);
 }
 
-.personalize-btn.active {
-  background: #C8AFA2; /* Slightly darker when active */
+.personalize-btn.enabled:hover {
+  background: #303f9f; /* Darker blue on hover when enabled */
+}
+
+.indicator-dot {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.indicator-dot.on {
+  background: #4caf50; /* Green for ON */
+}
+
+.indicator-dot.off {
+  background: #f44336; /* Red for OFF */
+}
+
+.preferences-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-left: 8px;
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+.preferences-btn:hover {
+  background: #e0e0e0;
+}
+
+.preferences-btn.active {
+  background: #3f51b5;
+  color: white;
 }
 
 .customize-icon {

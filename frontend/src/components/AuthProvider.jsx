@@ -53,7 +53,7 @@ const createCustomAuthClient = (baseURL) => {
       }
     },
     signUp: {
-      email: async ({ email, password }) => {
+      email: async ({ email, password, name }) => {
         try {
           const response = await fetch(`${baseURL}/api/auth/sign-up/email`, {
             method: 'POST',
@@ -61,7 +61,7 @@ const createCustomAuthClient = (baseURL) => {
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ email, password, name }),
           });
 
           if (!response.ok) {
@@ -164,15 +164,15 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const signUp = async (email, password, userData) => {
+  const signUp = async (email, password, userData = {}) => {
     setError(null);
     try {
       console.log('Attempting to sign up user with email:', email);
-      // Create the user with Better Auth
+      // Create the user with our custom auth API - include name in the request
       const result = await getAuthClient().signUp.email({
         email,
         password,
-        callbackURL: '/welcome', // Redirect after sign up
+        name: userData.name, // Pass the name to the backend
       });
 
       console.log('Signup result:', result);

@@ -9,7 +9,7 @@ const PersonalizationButton = ({ chapterId, chapterTitle }) => {
 
     // Safely access user profile from the context with fallback
   const userProfile = personalizationContext?.userProfile || { is_authenticated: false };
-  const { isPersonalizationEnabled, setIsPersonalizationEnabled, updateChapterPreferences } = personalizationContext || {};
+  const { isPersonalizationEnabled, setIsPersonalizationEnabled, updateChapterPreferences, togglePersonalization: globalTogglePersonalization } = personalizationContext || {};
 
   // Check if user is authenticated using the context
   const isAuthenticated = userProfile.is_authenticated || false;
@@ -22,7 +22,7 @@ const PersonalizationButton = ({ chapterId, chapterTitle }) => {
     }
   }, [chapterId]);
 
-  const togglePersonalization = () => {
+  const togglePersonalizationPanel = () => {
     // Prevent any errors from breaking the functionality
     try {
       if (!isAuthenticated) {
@@ -31,7 +31,7 @@ const PersonalizationButton = ({ chapterId, chapterTitle }) => {
       }
       setIsOpen(!isOpen);
     } catch (error) {
-      console.error('Error in togglePersonalization:', error);
+      console.error('Error in togglePersonalizationPanel:', error);
       // Fallback: just toggle the state
       setIsOpen(prev => !prev);
     }
@@ -74,14 +74,32 @@ const PersonalizationButton = ({ chapterId, chapterTitle }) => {
     );
   }
 
+  // Toggle the global personalization state
+  const toggleGlobalPersonalization = () => {
+    if (globalTogglePersonalization) {
+      globalTogglePersonalization();
+    }
+  };
+
   return (
     <div className="personalization-container">
       <button
-        className={`personalize-btn ${isOpen ? 'active' : ''}`}
-        onClick={togglePersonalization}
-        title={isOpen ? 'Hide Personalization' : 'Personalize Content'}
+        className={`personalize-btn ${isPersonalizationEnabled ? 'enabled' : ''}`}
+        onClick={toggleGlobalPersonalization}
+        title={isPersonalizationEnabled ? 'Disable Personalization' : 'Enable Personalization'}
       >
         <span className="customize-icon">🔧</span>
+        {isPersonalizationEnabled && <span className="indicator-dot on"></span>}
+        {!isPersonalizationEnabled && <span className="indicator-dot off"></span>}
+      </button>
+
+      {/* Preferences panel - separate from the main toggle */}
+      <button
+        className={`preferences-btn ${isOpen ? 'active' : ''}`}
+        onClick={togglePersonalizationPanel}
+        title="Open personalization preferences"
+      >
+        <span className="preferences-icon">⚙️</span>
       </button>
 
       {isOpen && (
