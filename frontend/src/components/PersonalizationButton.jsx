@@ -7,11 +7,12 @@ const PersonalizationButton = ({ chapterId, chapterTitle }) => {
   const [userPreferences, setUserPreferences] = useState({});
   const personalizationContext = useContext(PersonalizationContext);
 
-  // Access user profile from the context
-  const userProfile = personalizationContext ? personalizationContext.userProfile : { is_authenticated: false };
+    // Safely access user profile from the context with fallback
+  const userProfile = personalizationContext?.userProfile || { is_authenticated: false };
+  const { isPersonalizationEnabled, setIsPersonalizationEnabled, updateChapterPreferences } = personalizationContext || {};
 
   // Check if user is authenticated using the context
-  const isAuthenticated = userProfile.is_authenticated;
+  const isAuthenticated = userProfile.is_authenticated || false;
 
   // Load saved preferences for this chapter
   useEffect(() => {
@@ -22,11 +23,18 @@ const PersonalizationButton = ({ chapterId, chapterTitle }) => {
   }, [chapterId]);
 
   const togglePersonalization = () => {
-    if (!isAuthenticated) {
-      alert('Please log in to personalize content');
-      return;
+    // Prevent any errors from breaking the functionality
+    try {
+      if (!isAuthenticated) {
+        alert('Please log in to personalize content');
+        return;
+      }
+      setIsOpen(!isOpen);
+    } catch (error) {
+      console.error('Error in togglePersonalization:', error);
+      // Fallback: just toggle the state
+      setIsOpen(prev => !prev);
     }
-    setIsOpen(!isOpen);
   };
 
   const handlePreferenceChange = (preferenceKey, value) => {
@@ -38,6 +46,16 @@ const PersonalizationButton = ({ chapterId, chapterTitle }) => {
 
     // Save to localStorage
     localStorage.setItem(`chapterPrefs_${chapterId}`, JSON.stringify(newPreferences));
+
+    // Update context and enable personalization
+    if (setIsPersonalizationEnabled) {
+      setIsPersonalizationEnabled(true);
+    }
+
+    // Update chapter preferences in context if available
+    if (updateChapterPreferences) {
+      updateChapterPreferences(chapterId, newPreferences);
+    }
   };
 
   const resetPreferences = () => {

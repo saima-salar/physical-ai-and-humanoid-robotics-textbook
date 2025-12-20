@@ -4,10 +4,10 @@
 // Expose BACKEND_API_URL from Docusaurus config to window object
 if (typeof window !== 'undefined') {
   // In the browser context
-  window.BACKEND_API_URL = window.location.origin.replace(/:\d+$/, ':8001');
+  window.BACKEND_API_URL = window.location.origin.replace(/:\d+$/, ':8003');
 
   // For auth service, use a similar pattern
-  window.AUTH_API_URL = window.location.origin.replace(/:\d+$/, ':8002');
+  window.AUTH_API_URL = window.location.origin.replace(/:\d+$/, ':9001');
 
   // Define the chatbot modal function directly
   window.openChatbotModal = function() {

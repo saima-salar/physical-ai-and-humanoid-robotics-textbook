@@ -18,6 +18,10 @@ class HybridTranslationService:
         self.google_api_key = os.getenv('GOOGLE_TRANSLATE_API_KEY')
         self.google_base_url = "https://translation.googleapis.com/language/translate/v2"
 
+        # Google Gemini configuration
+        self.gemini_api_key = os.getenv('GEMINI_API_KEY')
+        self.gemini_available = bool(self.gemini_api_key)
+
         # OpenRouter configuration
         self.openrouter_api_key = OPENROUTER_API_KEY
         self.openrouter_available = bool(OPENROUTER_API_KEY)
@@ -26,8 +30,9 @@ class HybridTranslationService:
         """
         Translate text using multiple fallback methods:
         1. Google Translate API (if configured and available)
-        2. OpenAI API (if configured and available)
-        3. Fallback translation (basic method)
+        2. Google Gemini API (if configured and available)
+        3. OpenAI API (if configured and available)
+        4. Fallback translation (basic method)
         """
         # Method 1: Try Google Translate API
         if self.google_api_key:
@@ -38,7 +43,16 @@ class HybridTranslationService:
             except Exception as e:
                 logger.warning(f"Google Translate failed: {e}")
 
-        # Method 2: Try OpenRouter API
+        # Method 2: Try Google Gemini API
+        if self.gemini_available:
+            try:
+                result = await self._gemini_translate(text, target_language, source_language)
+                if result and "TRANSLATION SERVICE NOT CONFIGURED" not in result:
+                    return result
+            except Exception as e:
+                logger.warning(f"Gemini translation failed: {e}")
+
+        # Method 3: Try OpenRouter API
         if self.openrouter_available:
             try:
                 result = await self._openrouter_translate(text, target_language, source_language)
@@ -47,7 +61,7 @@ class HybridTranslationService:
             except Exception as e:
                 logger.warning(f"OpenRouter translation failed: {e}")
 
-        # Method 3: Fallback to basic translation
+        # Method 4: Fallback to basic translation
         logger.info("Using fallback translation method")
         return await self._fallback_translate(text, target_language)
 
@@ -131,6 +145,59 @@ class HybridTranslationService:
                     return translated_text
         except Exception as e:
             logger.error(f"OpenRouter Translation error: {str(e)}")
+            raise e
+
+    async def _gemini_translate(self, text: str, target_language: str, source_language: str) -> str:
+        """Translate using Google Gemini API"""
+        if not self.gemini_available:
+            raise Exception("Gemini API not configured")
+
+        try:
+            prompt = f"""
+            Translate the following text from {source_language} to {target_language} (Urdu).
+            Preserve the technical terminology and meaning as accurately as possible.
+            Return only the translated text without any additional commentary.
+
+            Text to translate:
+            {text}
+            """
+
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={self.gemini_api_key}"
+
+            headers = {
+                "Content-Type": "application/json"
+            }
+
+            payload = {
+                "contents": [{
+                    "parts": [{
+                        "text": prompt
+                    }]
+                }],
+                "generationConfig": {
+                    "temperature": 0.3,
+                    "maxOutputTokens": min(len(text) * 2, 8192)
+                }
+            }
+
+            async with aiohttp.ClientSession() as session:
+                async with session.post(url, headers=headers, json=payload) as response:
+                    if response.status != 200:
+                        error_text = await response.text()
+                        logger.error(f"Gemini Translation API error {response.status}: {error_text}")
+                        raise Exception(f"Gemini API error: {error_text}")
+
+                    data = await response.json()
+
+                    # Extract the translated text from Gemini's response
+                    try:
+                        translated_text = data['candidates'][0]['content']['parts'][0]['text'].strip()
+                        return translated_text
+                    except (KeyError, IndexError) as e:
+                        logger.error(f"Error parsing Gemini response: {e}, response: {data}")
+                        return await self._fallback_translate(text, target_language)
+        except Exception as e:
+            logger.error(f"Gemini Translation error: {str(e)}")
             raise e
 
     async def _fallback_translate(self, text: str, target_language: str) -> str:

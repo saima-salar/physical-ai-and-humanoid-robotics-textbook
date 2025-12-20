@@ -44,15 +44,27 @@ export const PersonalizationProvider = ({ children }) => {
       const authProfile = {
         name: session.user.name || session.user.email.split('@')[0],
         is_authenticated: true,
-        // Map custom fields from Better Auth user object
-        softwareExperience: session.user.softwareExperience || '',
-        hardwareExperience: session.user.hardwareExperience || '',
-        programmingLanguages: session.user.programmingLanguages ? JSON.parse(session.user.programmingLanguages) : [],
-        roboticsExperience: session.user.roboticsExperience || '',
-        learningGoals: session.user.learningGoals ? JSON.parse(session.user.learningGoals) : [],
-        skillLevel: session.user.skillLevel || 'intermediate',
-        domain: session.user.domainInterest || 'general',
-        interests: [session.user.domainInterest || 'general'],
+        // Map custom fields from Better Auth user object (fallback to localStorage if not available)
+        softwareExperience: session.user.softwareExperience || localStorage.getItem('softwareExperience') || '',
+        hardwareExperience: session.user.hardwareExperience || localStorage.getItem('hardwareExperience') || '',
+        programmingLanguages: session.user.programmingLanguages ?
+                             (typeof session.user.programmingLanguages === 'string' ?
+                              JSON.parse(session.user.programmingLanguages) :
+                              session.user.programmingLanguages) :
+                             JSON.parse(localStorage.getItem('programmingLanguages') || '[]'),
+        roboticsExperience: session.user.roboticsExperience || localStorage.getItem('roboticsExperience') || '',
+        learningGoals: session.user.learningGoals ?
+                      (typeof session.user.learningGoals === 'string' ?
+                       JSON.parse(session.user.learningGoals) :
+                       session.user.learningGoals) :
+                       JSON.parse(localStorage.getItem('learningGoals') || '[]'),
+        skillLevel: session.user.skillLevel || localStorage.getItem('skillLevel') || 'intermediate',
+        domain: session.user.domainInterest || localStorage.getItem('domain') || 'general',
+        interests: session.user.interests ?
+                  (typeof session.user.interests === 'string' ?
+                   JSON.parse(session.user.interests) :
+                   session.user.interests) :
+                  JSON.parse(localStorage.getItem('interests') || '["robotics", "ai"]'),
       };
       setUserProfile(authProfile);
 
@@ -97,6 +109,16 @@ export const PersonalizationProvider = ({ children }) => {
   const updateUserProfile = (newProfile) => {
     setUserProfile(newProfile);
     localStorage.setItem('userProfile', JSON.stringify(newProfile));
+
+    // Also save individual fields to localStorage for fallback
+    localStorage.setItem('softwareExperience', newProfile.softwareExperience || '');
+    localStorage.setItem('hardwareExperience', newProfile.hardwareExperience || '');
+    localStorage.setItem('programmingLanguages', JSON.stringify(newProfile.programmingLanguages || []));
+    localStorage.setItem('roboticsExperience', newProfile.roboticsExperience || '');
+    localStorage.setItem('learningGoals', JSON.stringify(newProfile.learningGoals || []));
+    localStorage.setItem('skillLevel', newProfile.skillLevel || 'intermediate');
+    localStorage.setItem('domain', newProfile.domain || 'general');
+    localStorage.setItem('interests', JSON.stringify(newProfile.interests || ['robotics', 'ai']));
   };
 
   const updateChapterPreferences = (chapterId, preferences) => {

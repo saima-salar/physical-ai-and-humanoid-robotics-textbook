@@ -69,7 +69,7 @@ const config = {
 
   // Environment variables for the chatbot and other components
   customFields: {
-    BACKEND_API_URL: process.env.BACKEND_API_URL || 'http://localhost:8001',
+    BACKEND_API_URL: process.env.BACKEND_API_URL || 'http://localhost:8003',
   },
 
   // Google Fonts integration
